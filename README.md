@@ -1,7 +1,7 @@
 # kubernetes_eks_terraform
 SETUP KUBERNETES USING TERRAFORM
 
-After you Deployment, you can SSH into Ec2 with public iP(WORK node)
+After you Deployment, you can SSH into Ec2 instance with public iP shown in your tf output
 
     1  curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.17/2023-03-17/bin/linux/amd64/kubectl
     2  chmod +x kubectl
