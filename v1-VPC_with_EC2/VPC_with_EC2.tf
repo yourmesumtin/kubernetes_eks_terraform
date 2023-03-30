@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 resource "aws_instance" "demo-server" {
- ami = var.os_name
- key_name = var.key 
- instance_type  = var.instance-type
- associate_public_ip_address = true
-subnet_id = aws_subnet.demo_subnet.id
-vpc_security_group_ids = [aws_security_group.demo-vpc-sg.id]
+  ami                         = var.os_name
+  key_name                    = var.key
+  instance_type               = var.instance-type
+  associate_public_ip_address = true
+  subnet_id                   = aws_subnet.demo_subnet.id
+  vpc_security_group_ids      = [aws_security_group.demo-vpc-sg.id]
 }
 
 // Create VPC
@@ -18,8 +18,8 @@ resource "aws_vpc" "demo-vpc" {
 
 // Create Subnet
 resource "aws_subnet" "demo_subnet" {
-  vpc_id     = aws_vpc.demo-vpc.id 
-  cidr_block = var.subnet1-cidr
+  vpc_id            = aws_vpc.demo-vpc.id
+  cidr_block        = var.subnet1-cidr
   availability_zone = var.subent_az
 
   tags = {
@@ -51,16 +51,16 @@ resource "aws_route_table" "demo-rt" {
 
 // associate subnet with route table 
 resource "aws_route_table_association" "demo-rt_association" {
-  subnet_id      = aws_subnet.demo_subnet.id 
+  subnet_id = aws_subnet.demo_subnet.id
 
   route_table_id = aws_route_table.demo-rt.id
 }
 // create a security group 
 
 resource "aws_security_group" "demo-vpc-sg" {
-  name        = "demo-vpc-sg"
- 
-  vpc_id      = aws_vpc.demo-vpc.id
+  name = "demo-vpc-sg"
+
+  vpc_id = aws_vpc.demo-vpc.id
 
   ingress {
 
