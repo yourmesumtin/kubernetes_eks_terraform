@@ -1,12 +1,11 @@
 variable "sg_ids" {
-type = string
+  type = string
 }
 
 variable "subnet_ids" {
-  type = list
+  type = list(any)
 }
 
 variable "vpc_id" {
-   //default = "vpc-5f680722"
-   type = string
+  type = string
 }
