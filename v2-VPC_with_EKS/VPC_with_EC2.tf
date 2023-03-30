@@ -20,8 +20,8 @@ resource "aws_vpc" "demo-vpc" {
 resource "aws_subnet" "demo_subnet-1" {
   vpc_id            = aws_vpc.demo-vpc.id
   cidr_block        = var.subnet1-cidr
-  availability_zone = var.subent_az
-
+  availability_zone = var.subent_az-1
+  map_public_ip_on_launch = true
   tags = {
     Name = "demo_subnet-1"
   }
@@ -30,8 +30,8 @@ resource "aws_subnet" "demo_subnet-1" {
 resource "aws_subnet" "demo_subnet-2" {
   vpc_id            = aws_vpc.demo-vpc.id
   cidr_block        = var.subnet2-cidr
-  availability_zone = var.subent_az
-
+  availability_zone = var.subent_az-2
+  map_public_ip_on_launch = true
   tags = {
     Name = "demo_subnet-2"
   }
@@ -110,7 +110,7 @@ module "eks" {
   source     = "./eks"
   sg_ids     = module.sgs.security_group_public
   vpc_id     = aws_vpc.demo-vpc.id
-  subnet_ids = [aws_subnet.demo_subnet-1.id, aws_subnet.demo_subnet-1.id]
+  subnet_ids = [aws_subnet.demo_subnet-1.id, aws_subnet.demo_subnet-2.id]
 
 }
 

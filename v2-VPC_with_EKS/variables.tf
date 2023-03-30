@@ -26,6 +26,10 @@ variable "subnet1-cidr" {
 variable "subnet2-cidr" {
   default = "10.10.3.0/24"
 }
-variable "subent_az" {
+variable "subent_az-1" {
   default = "us-west-2a"
+}
+
+variable "subent_az-2" {
+  default = "us-west-2b"
 }
